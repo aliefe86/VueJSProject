@@ -1,0 +1,23 @@
+
+        <input type="text" v-on:input="changeTitle"> 
+        v-on directive is like ngModel bind the input value to the output automatically 
+        as key pressed. Every key press, function will be invoked and re-renders the vue object and gives the output
+
+
+        <p><a v-bind:href="link">Google</a></p>
+        v-bind is used to bind html attribute to the the property located in data object which is inside Vue object. unlike v-on, v-bind does not use curly braces{{}}
+        v-on listens to the function, v-bind binds the property declared in data
+        "{{}} we can only use curly braces in the place when we use text" 
+        we cant use curly braces in any html element attribute
+
+        <h1 v-once>{{title}}</h1>
+        v-once keep the html element as it is in the inital render, so it get render only once, if you reassign the title later and re-render the the html element, v-once keeps it
+
+        Note: Vue.js renders only text not html element
+        <p v-html="finishedLink"></p>
+
+        Whatever property you have in the data object, you can update it as you invoke a method and reassign the properties with any value you want
+
+        Everything that is in the computed object can be used as the properties used in data object. Computed object properties are anylized and see if they have a relationship with any other execution so that JS engine will decide whether it should be run or not
+
+        you can type @clcik instead of <v-on:click> or :href instead of <v-bind:href>

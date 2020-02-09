@@ -1,0 +1,109 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+    <link rel="stylesheet" type="text/css" href="myStyle.css">
+</head>
+<body>
+
+    <div  id="task">
+        <!-- task 1 -->
+        <div>
+            <button @click="startEffect">Start Effect</button>
+            <div id="effect" v-bind:class="effectClasses"></div>
+        </div>
+        <!-- task 2 -->
+        <div :class="[lass1,class2]">I got no class :(</div>
+
+        <!-- task3 -->
+        <div> 
+            <input type="text" v-model="userClass" style="border: solid black;">
+            <div v-bind:class="[{visible:true}, userClass]">this will change based on the user entered class name</div>
+        </div>
+
+       
+        <!-- task 4 -->
+        <br><hr>
+        <div>
+            <input type="text" v-model="className" style="border: solid black;">
+            <input type="text" v-model="bool" style="border: solid black;">
+            <div v-bind:class="[className, {visible: bool}]">this is the second effeceted div attached by entered classes</div>
+        </div>
+
+         <!-- task 5 -->
+         <div> 
+            <input type="text" v-model="mStyle.color" style="border: solid black">
+            <div v-bind:style="mStyle">a specified atribute value can change based the entered value by user </div>
+        </div>
+        <!-- task 6 -->   
+        <div>
+            <button @click="increase" >Start Progress</button>
+            <div v-bind:class="['progressBar']" v-bind:style="prgrsBar"></div>
+        </div>
+        
+    </div>
+   
+
+
+<script>
+
+    new Vue({
+        el:"#task",
+        data:{
+            className:'',
+            bool:true,
+            userClass:'',
+            effectClasses:{
+                shrink : false,
+                highlight: true
+                },
+            class1:"class1",
+            class2:"class2",
+            mStyle:{
+                width:'100px',
+                height:'150px',
+                color:'blue'
+            },
+            prgrsBar:{
+                width:'0px',
+                backgroundColor:'red'
+            }
+            
+        },
+        methods:{
+            startEffect:function(){
+                var vm=this;
+                setInterval(() => {
+                        vm.effectClasses.highlight=!vm.effectClasses.highlight;
+                        vm.effectClasses.shrink=!vm.effectClasses.shrink;
+                }, 1000);
+
+
+            },
+            increase:function(){
+              var vm=this;
+              var width=0;
+                setInterval(function(){
+                    width=width+10;
+                   vm.prgrsBar.width=width+'px';
+                },500);
+            }
+        }
+        // computed:{
+        //     mStyle:function(){
+        //         return{
+        //             backgroundColor=this.color
+        //         }
+               
+        //     }
+        // }
+    });
+    
+</script>
+    
+    
+</body>
+</html>

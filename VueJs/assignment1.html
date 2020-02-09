@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+
+    <div id="xyz">
+        <input type="text" id="nameField"  v-on:input="functionOverwrite"> //v-bind:value='name'
+        <p> VueJS is pretty cool- {{name}} {{age}}</p>
+        <p>{{ outputFunction() }}</p>
+        <p>{{ randomNum() }}</p>
+        <p>{{paragraph}}</p>
+        <img v-bind:src="imgLink" >
+        
+    </div>
+
+
+<script>
+    new Vue({
+        el:'#xyz',
+        data:{
+            name:'Mehmet Ali Efe',
+            age:33,
+            imgLink:'https://image.shutterstock.com/image-photo/beautiful-water-drop-on-dandelion-260nw-789676552.jpg',
+            paragraph:"you can write anything here"
+        },
+        methods:{
+            outputFunction:function(){
+                return this.age*3;
+            },
+            randomNum:function(){
+                return Math.random();
+            },
+            functionOverwrite:function(event){
+                this.paragraph=event.target.value;
+            }
+        }
+    });
+</script>
+    
+    
+</body>
+</html>
