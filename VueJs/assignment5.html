@@ -1,0 +1,71 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+    <link rel="stylesheet" type="text/css" href="myStyle.css">
+</head>
+<body>
+
+    <div  id="task">
+        <!-- task 1 -->
+       <div>
+           <button @click="present=!present">Toggle</button>
+           <p v-if="present">You either see me</p>
+           <p v-if="!present">..or me</p>
+           =====
+           <p v-show='present'>Do you also see me</p>
+       </div>
+           <!-- task 2 -->
+           -------------
+        <div>
+            <ul>
+                <li v-for="(name, index) in names">{{name}}:{{index}}</li>
+            <!-- task 3 -->
+            --
+                <li v-for="(values,keys, index) in object">{{keys}}-->{{values}} :({{index}})</li>
+            <!-- task 4 -->
+            --
+            <li v-for="(value,keys,index) in array">
+                {{keys}}:{{value}}--({{index}})
+                <div v-if="keys==data">
+                    <li v-for="num in array.data">{{num}}</li>
+                </div>
+            </li>
+            </ul>
+        </div>
+
+    </div>
+   
+
+
+<script>
+new Vue({
+
+        el:'#task',
+        data:{
+            present:true,
+            names:['Ozge','Mehmet'],
+            object:{
+                title:'lord of the rings',
+                author:'J.R.R Tolkines',
+                books:'3'
+            },
+            array:{
+                name:'TESTOBJECT',
+                data:[1.67,1.33,0.98,2.21]
+            },
+            
+
+        }
+    
+});
+   
+    
+</script>
+    
+    
+</body>
+</html>
